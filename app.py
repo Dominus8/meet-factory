@@ -11,7 +11,8 @@ from flask_security import SQLAlchemyUserDatastore
 from flask_security import Security
 from flask_security import current_user
 
-app = Flask(__name__)
+
+app: Flask = Flask(__name__)
 app.config.from_object(Configuration)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)

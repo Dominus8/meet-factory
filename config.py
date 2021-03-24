@@ -12,3 +12,5 @@ class Configuration(object):
     SECRET_KEY = 'secret 12345'
     SECURITY_PASSWORD_SALT = 'kek'
     SECURITY_PASSWORD_HASH = 'sha256_crypt'
+
+    UPLOADED_PHOTOS_DEST = 'static/image'

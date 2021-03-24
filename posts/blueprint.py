@@ -3,24 +3,43 @@ from flask import render_template
 from flask import request
 from models import *
 from .forms import PostForm
-from app import db
+from app import db, app
 from flask import redirect
 from flask import url_for
 from flask_security import login_required
-# from flask_uploads import *
+from flask_uploads import UploadSet, configure_uploads, IMAGES
+
 
 posts = Blueprint('posts', __name__, template_folder='templates')
+
+# Загрузка файлов
+photos = UploadSet("photos", IMAGES)
+
+configure_uploads(app, photos)
+
+
+# @posts.route('/upload', methods=['POST', 'GET'])
+# def upload():
+#     if request.method == 'post' and 'photo' in request.files:
+#         filename = photos.save(request.files['photo'])
+#         return filename
+#     return render_template('posts/upload.html')
+
+# создание поста
 
 
 @posts.route('/create', methods=['POST', 'GET'])
 @login_required
 def create_post():
     if request.method == 'POST':
+        photos.save(request.form.photos.data)
         title = request.form['title']
         body = request.form['body']
+        photo = request.form.photos['{filename}']
 
         try:
-            post = Post(title=title, body=body)
+
+            post = Post(title=title, body=body, photo=photo)
             db.session.add(post)
             db.session.commit()
         except:
