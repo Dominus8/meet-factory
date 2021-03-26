@@ -12,7 +12,7 @@
     <div class="col-md-3"></div>
 
     <div class="col-md-6">
-        <form action="{{ url_for('posts.edit_post', slug = post.slug)}}" method="post">
+        <form enctype = 'multipart/form-data' action="{{ url_for('posts.edit_post', slug = post.slug)}}" method="post">
             {% for field in form %}
                     <div class="form-group">
                         {{ field.label(class='control-label')}}

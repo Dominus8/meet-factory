@@ -1,29 +1,22 @@
-from flask import Blueprint
-from flask import render_template
-from flask import request
+from flask import Blueprint, redirect, url_for, render_template, request
 from models import *
 from .forms import PostForm
 from app import db, app
-from flask import redirect
-from flask import url_for
 from flask_security import login_required
 from flask_uploads import UploadSet, configure_uploads, IMAGES
-
+from PIL import Image
 
 posts = Blueprint('posts', __name__, template_folder='templates')
 
 # Загрузка файлов
-photos = UploadSet("photos", IMAGES)
+
+photos = UploadSet('photos', IMAGES)
 
 configure_uploads(app, photos)
 
 
-# @posts.route('/upload', methods=['POST', 'GET'])
-# def upload():
-#     if request.method == 'post' and 'photo' in request.files:
-#         filename = photos.save(request.files['photo'])
-#         return filename
-#     return render_template('posts/upload.html')
+
+
 
 # создание поста
 
@@ -32,14 +25,12 @@ configure_uploads(app, photos)
 @login_required
 def create_post():
     if request.method == 'POST':
-        photos.save(request.form.photos.data)
         title = request.form['title']
         body = request.form['body']
-        photo = request.form.photos['{filename}']
+        image = photos.save(request.files['image'])
 
         try:
-
-            post = Post(title=title, body=body, photo=photo)
+            post = Post(title=title, body=body, image=image)
             db.session.add(post)
             db.session.commit()
         except:
@@ -86,11 +77,15 @@ def index():
     return render_template('posts/index.html', posts=posts, pages=pages)
 
 
+
 @posts.route('/<slug>')
 def post_detail(slug):
     post = Post.query.filter(Post.slug == slug).first_or_404()
     tags = post.tags
-    return render_template('posts/post_detail.html', post=post, tags=tags)
+    img = Image.open("static/image/"+post.image)
+    image = img.resize((600, 600), Image.ANTIALIAS)
+    image = image.save("static/image/"+post.image)
+    return render_template('posts/post_detail.html', post=post, tags=tags, image=image)
 
 
 @posts.route('/tag/<slug>')
@@ -98,3 +93,4 @@ def tag_detail(slug):
     tag = Tag.query.filter(Tag.slug == slug).first_or_404()
     posts = tag.posts.all()
     return render_template('posts/tag_detail.html', tag=tag, posts=posts)
+

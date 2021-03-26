@@ -17,5 +17,6 @@
             <a href="{{ url_for('posts.tag_detail',slug=tag.slug) }}"><button type="button" class="btn btn-outline-primary">{{ tag.name }}</button></a>
 
         {% endfor %}<br>
+        <img src="../static/image/{{post.image}}" alt="Image">
     {{ post.body }}
 {% endblock %}

@@ -7,9 +7,7 @@ from flask_script import Manager
 from flask_admin import Admin, AdminIndexView
 from flask_admin.contrib.sqla import ModelView
 
-from flask_security import SQLAlchemyUserDatastore
-from flask_security import Security
-from flask_security import current_user
+from flask_security import SQLAlchemyUserDatastore, Security, current_user
 
 
 app: Flask = Flask(__name__)
@@ -18,6 +16,7 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 manager = Manager(app)
 manager.add_command('db', MigrateCommand)
+
 
 from models import *
 
