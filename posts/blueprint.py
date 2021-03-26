@@ -77,13 +77,13 @@ def index():
     return render_template('posts/index.html', posts=posts, pages=pages)
 
 
-
 @posts.route('/<slug>')
 def post_detail(slug):
     post = Post.query.filter(Post.slug == slug).first_or_404()
     tags = post.tags
     img = Image.open("static/image/"+post.image)
-    image = img.resize((600, 600), Image.ANTIALIAS)
+    if img.size[0] != '450':
+        image = img.resize((450, 450), Image.ANTIALIAS)
     image = image.save("static/image/"+post.image)
     return render_template('posts/post_detail.html', post=post, tags=tags, image=image)
 
