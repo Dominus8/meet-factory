@@ -74,7 +74,12 @@ def index():
 
     pages = posts.paginate(page=page, per_page=5)
 
-    return render_template('posts/index.html', posts=posts, pages=pages)
+    tags = Tag.query.all()
+
+    print(tags)
+
+    return render_template('posts/index.html', posts=posts, pages=pages, tags=tags)
+
 
 
 @posts.route('/<slug>')

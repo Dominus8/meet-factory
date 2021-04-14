@@ -6,11 +6,12 @@
 
 
 {% block content_title %}
-    {{ post.title }}
-    <div class="tags">
 
+    <div class="tags">
+        {{ post.title }}
     </div>
 {% endblock %}
+
 
 {% block content %}
         {% for tag in tags %}
