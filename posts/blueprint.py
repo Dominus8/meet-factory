@@ -61,14 +61,17 @@ def edit_post(slug):
 def index():
     q = request.args.get('q')
     page = request.args.get('page')
+#     tags = request.args.get('t')
 
     if page and page.isdigit():
         page = int(page)
     else:
         page = 1
 
+
     if q:
         posts = Post.query.filter(Post.title.contains(q) | Post.body.contains(q))  # .all()
+        print(q)
     else:
         posts = Post.query.order_by(Post.created.desc())
 
@@ -76,7 +79,6 @@ def index():
 
     tags = Tag.query.all()
 
-    print(tags)
 
     return render_template('posts/index.html', posts=posts, pages=pages, tags=tags)
 
