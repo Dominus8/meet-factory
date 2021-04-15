@@ -11,15 +11,10 @@ posts = Blueprint('posts', __name__, template_folder='templates')
 # Загрузка файлов
 
 photos = UploadSet('photos', IMAGES)
-
 configure_uploads(app, photos)
 
 
-
-
-
 # создание поста
-
 
 @posts.route('/create', methods=['POST', 'GET'])
 @login_required
@@ -58,30 +53,31 @@ def edit_post(slug):
 
 
 @posts.route('/')
-def index():
+def index(*args, **kwargs):
     q = request.args.get('q')
     page = request.args.get('page')
-#     tags = request.args.get('t')
+    s = request.args.get('slug')
+    tags = Tag.query.all()
+
 
     if page and page.isdigit():
         page = int(page)
     else:
         page = 1
 
-
     if q:
         posts = Post.query.filter(Post.title.contains(q) | Post.body.contains(q))  # .all()
-        print(q)
     else:
         posts = Post.query.order_by(Post.created.desc())
 
-    pages = posts.paginate(page=page, per_page=5)
+    if s:
+        tag = Tag.query.filter(Tag.slug == s).first_or_404()
+        posts = tag.posts
 
-    tags = Tag.query.all()
+    pages = posts.paginate(page=page, per_page=10)
 
 
-    return render_template('posts/index.html', posts=posts, pages=pages, tags=tags)
-
+    return render_template('posts/index.html', posts=posts, pages=pages, tags=tags,)
 
 
 @posts.route('/<slug>')

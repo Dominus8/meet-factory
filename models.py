@@ -43,6 +43,7 @@ class Tag(db.Model):
     name = db.Column(db.String(100))
     slug = db.Column(db.String(140), unique=True)
 
+
     def __init__(self, *args, **kwargs):
         super(Tag, self).__init__(*args, **kwargs)
         self.slug = slygify(self.name)
