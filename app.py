@@ -4,6 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate, MigrateCommand
 from flask_script import Manager
 
+
 from flask_admin import Admin, AdminIndexView
 from flask_admin.contrib.sqla import ModelView
 

@@ -22,7 +22,6 @@
     <div class="col-md-9">
         <div class="row">
             <div class="cards_content">
-                </div>
                 {% for post in pages.items %}
                     <div class="card" style="width: 18rem;">
                         {% if post.image %}
@@ -35,6 +34,7 @@
                     </div>
                 {% endfor %}
             </div>
+        </div>
         <nav>
           <ul class="pagination pagination-sm">
               {% for page in pages.iter_pages() %}

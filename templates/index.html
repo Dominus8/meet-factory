@@ -2,7 +2,43 @@
 
 
 {% block content %}
-<p id="test">
-    {{test}}
-</p>
+
+<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    {% for f in files%}
+      {% if f=='slide_1.jpeg'%}
+        <div class="carousel-item active">
+          <img src="../static/image/slider/{{f}}" class="d-block w-100" alt="Image">
+        </div>
+      {% else %}
+        <div class="carousel-item">
+          <img src="../static/image/slider/{{f}}" class="d-block w-100" alt="Image">
+        </div>
+      {% endif %}
+    {% endfor %}
+
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+<div class="row">
+    <div class="cat_cards">
+      {% for c in category %}
+        <a href="{{ url_for('posts.tag_detail', slug=c.slug) }}">
+          <div id="index_cards"  class="card" style="width: 18rem;">
+            <div class="card-body">
+              <p>{{c.name}}</p>
+            </div>
+            <img src="../static/image/alt.jpg" class="card-img-top" alt="¯\_(ツ)_/¯">
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+</div>
 {% endblock %}

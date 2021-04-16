@@ -2,3 +2,31 @@ h2{
     color: red;
     font-size: 3rem;
 }
+.cards_content{
+    display:flex;
+}
+
+.cat_cards{
+    display:flex;
+
+}
+
+.cat_cards a{
+    text-decoration:none;
+    color: black;
+}
+
+.cat_cards a .card-body {
+    background-color: grey;
+}
+
+.cat_cards a .card-body {
+    font-size:0.93em;
+    font-weight: 600;
+    text-transform:uppercase;
+}
+
+#index_cards{
+    text-align:center;
+    margin:5px;
+}
