@@ -15,6 +15,11 @@ post_tags = db.Table('post_tags',
                      db.Column('post_id', db.Integer, db.ForeignKey('post.id'))
                      )
 
+class Slider(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(140))
+    body = db.Column(db.Text)
+    image = db.Column(db.String(150), default='')
 
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)

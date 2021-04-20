@@ -3,22 +3,24 @@ from flask import render_template
 from flask_uploads import UploadSet, configure_uploads, IMAGES
 from PIL import Image
 import os
-from models import Tag, Post
+from models import Tag, Post, Slider
 
 
 @app.route('/')
 def index():
-    files = os.listdir(path="D:\git_source\meet-factory\static\image\slider")
+#     files = os.listdir(path="D:\git_source\meet-factory\static\image\slider")
     category = Tag.query.all()
+    slides = Slider.query.all()
 
 
-    for f in files:
-        img = Image.open("static/image/slider/"+f)
-        if img.size[0] != '1200':
-            image = img.resize((1200, 600), Image.ANTIALIAS)
-        image = image.save("static/image/slider/"+f)
 
-    return render_template('index.html', files=files, category=category)
+#     for f in files:
+#         img = Image.open("static/image/slider/"+f)
+#         if img.size[0] != '1200':
+#             image = img.resize((1200, 600), Image.ANTIALIAS)
+#         image = image.save("static/image/slider/"+f)
+
+    return render_template('index.html', category=category, slides=slides)
 
 
 @app.errorhandler(404)
