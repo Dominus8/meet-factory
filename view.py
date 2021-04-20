@@ -18,9 +18,6 @@ def index():
             image = img.resize((1200, 600), Image.ANTIALIAS)
         image = image.save("static/image/slider/"+f)
 
-
-
-#         print(img.size)
     return render_template('index.html', files=files, category=category)
 
 

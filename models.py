@@ -42,6 +42,8 @@ class Tag(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100))
     slug = db.Column(db.String(140), unique=True)
+    image = db.Column(db.String(150), default='')
+    subtitle = db.Column(db.Text)
 
 
     def __init__(self, *args, **kwargs):
@@ -49,7 +51,7 @@ class Tag(db.Model):
         self.slug = slygify(self.name)
 
     def __repr__(self):
-        return '{}'.format(self.name)
+        return '{},{}'.format(self.name, self.subtitle)
 
 
 roles_users = db.Table('roles_users',
