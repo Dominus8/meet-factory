@@ -1,26 +1,44 @@
-from app import app
-from flask import render_template
+from app import app, db
+from flask import render_template, request, redirect, url_for
 from flask_uploads import UploadSet, configure_uploads, IMAGES
 from PIL import Image
 import os
 from models import Tag, Post, Slider
-
+from flask_security import login_required
+from forms import *
 
 @app.route('/')
 def index():
-#     files = os.listdir(path="D:\git_source\meet-factory\static\image\slider")
+    
     category = Tag.query.all()
     slides = Slider.query.all()
 
 
-
-#     for f in files:
-#         img = Image.open("static/image/slider/"+f)
-#         if img.size[0] != '1200':
-#             image = img.resize((1200, 600), Image.ANTIALIAS)
-#         image = image.save("static/image/slider/"+f)
-
     return render_template('index.html', category=category, slides=slides)
+
+
+@app.route('/create', methods=['POST', 'GET'])
+@login_required
+
+def create_post():
+
+    photos = UploadSet('photos', IMAGES)
+    configure_uploads(app, photos)
+    
+    if request.method == 'POST':
+        title = request.form['title']
+        body = request.form['body']
+        image = photos.save(request.files['image'])
+        try:
+            post = Post(title=title, body=body, image=image)
+            db.session.add(post)
+            db.session.commit()
+        except:
+            print('база не смогла')
+        return redirect(url_for('index'))
+    form = PostForm()
+
+    return render_template('create.html', form=form)
 
 
 @app.errorhandler(404)
