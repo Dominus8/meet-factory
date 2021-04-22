@@ -12,11 +12,13 @@ def index():
     
     category = Tag.query.all()
     slides = Slider.query.all()
-#     img = Image.open("static/image/"+slides.image)
-#     if img.size[0] != '450':
-#         image = img.resize((450, 450), Image.ANTIALIAS)
-#     image = image.save("static/image/slider"+slides.image)
 
+    for s in slides:
+        img = Image.open("static/image/"+s.image)
+
+        if img.size[0] != '1100':
+            image = img.resize((1200, 601), Image.ANTIALIAS)
+            image.save(r"static/image/slider/"+s.image)
 
     return render_template('index.html', category=category, slides=slides)
 
