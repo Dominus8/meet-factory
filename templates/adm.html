@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Админка
+{% endblock %}
+
+{% block content_titletitle %}
+  Управление содержимым
+{% endblock %}
+
+{% block content %}
+<div style="display:flex;">
+  <form action="{{url_for('adm')}}" method="get">
+    <input type="submit" name="create" value="Создать товар">
+  </form>
+  <form action="{{url_for('adm')}}" method="get">
+    <input type="submit" name="create" value="Создать категорию">
+  </form>
+  <form action="{{url_for('adm') }}" method="get">
+    <input type="submit" name="create" value="Создать слайд">
+  </form>
+</div>
+
+
+{% endblock %}

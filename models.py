@@ -21,6 +21,7 @@ class Slider(db.Model):
     body = db.Column(db.Text)
     image = db.Column(db.String(150), default='')
 
+
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(140))

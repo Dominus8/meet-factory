@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    Create new post
+    Создать слайд
 {% endblock %}
 
 {% block content_titletitle %}
-    Создать
+    Создать слайд
 {% endblock %}
 
 {% block content %}
@@ -14,7 +14,7 @@
     </div>
 
     <div class="col-md-6">
-        <form enctype = 'multipart/form-data' action="{{ url_for('create_tag') }}" method="post">
+        <form enctype = 'multipart/form-data' action="{{ url_for('create_slide') }}" method="post">
             {% for field in form %}
                     <div class="form-group">
                         {{ field.label(class='control-label')}}

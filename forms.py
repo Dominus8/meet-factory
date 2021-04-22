@@ -2,16 +2,16 @@ from wtforms import Form, StringField, TextAreaField, FileField
 
 
 class PostForm(Form):
-    title = StringField('Title')
-    body = TextAreaField('Body')
-    image = FileField('Image')
+    title = StringField('Название товара')
+    body = TextAreaField('Информация о товаре')
+    image = FileField('Изображение товара')
 
 class TagForm(Form):
     title = StringField('Заголовок категории')
-    body = TextAreaField('Body')
-    image = FileField('Image')
+    body = TextAreaField('Описание категории')
+    image = FileField('Изображение')
 
 class SliderForm(Form):
     title = StringField('Заголовок слайда')
-    body = TextAreaField('Body')
-    image = FileField('Image')
+    body = TextAreaField('Текст на слайде')
+    image = FileField('Изображение на слайде')
