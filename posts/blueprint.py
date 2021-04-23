@@ -40,7 +40,6 @@ def create_post():
 @login_required
 def edit_post(slug):
     post = Post.query.filter(Post.slug == slug).first_or_404()
-
     if request.method == 'POST':
         form = PostForm(formdata=request.form, obj=post)
         form.populate_obj(post)
@@ -56,7 +55,6 @@ def edit_post(slug):
 @login_required
 def edit_tag(slug):
     tag = Tag.query.filter(Tag.slug == slug).first_or_404()
-    print(tag)
     if request.method == 'POST':
         form = TagForm(formdata=request.form, obj=tag)
         form.populate_obj(tag)
@@ -73,7 +71,6 @@ def edit_tag(slug):
 @login_required
 def edit_slide(id):
     slide = Slider.query.filter(Slider.id == id).first_or_404()
-    print(slide)
     if request.method == 'POST':
         form = SliderForm(formdata=request.form, obj=slide)
         form.populate_obj(slide)
@@ -84,6 +81,38 @@ def edit_slide(id):
     form = SliderForm(obj=slide)
     return render_template('posts/edit_slide.html', slide=slide, form=form)
 
+
+@posts.route('/<id>/delete/', methods=['POST', 'GET'])
+@login_required
+def delete(*args, **kwargs):
+    type = request.args.get('type')
+    id = list(request.view_args.values())[0]
+    if type == 'post':
+        try:
+            post = Post.query.filter(Post.id == id).first_or_404()
+            db.session.delete(post)
+            db.session.commit()
+        except:
+            print('база не спогла')
+        return redirect(url_for('adm'))
+    if type == 'tag':
+        try:
+            tag = Tag.query.filter(Tag.id == id).first_or_404()
+            db.session.delete(tag)
+            db.session.commit()
+        except:
+            print('база не спогла')
+        return redirect(url_for('adm'))
+    if type == 'slide':
+        try:
+            slide = Slider.query.filter(Slider.id == id).first_or_404()
+            db.session.delete(slide)
+            db.session.commit()
+        except:
+            print('база не спогла')
+        return redirect(url_for('adm'))
+
+    return render_template('adm.html')
 
 @posts.route('/')
 def index(*args, **kwargs):
