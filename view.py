@@ -20,29 +20,41 @@ def index():
             image = img.resize((1200, 601), Image.ANTIALIAS)
             image.save(r"static/image/slider/"+s.image)
 
+
+    for t in category:
+        img = Image.open("static/image/"+t.image)
+
+        if img.size[0] != '285':
+            image = img.resize((286, 286), Image.ANTIALIAS)
+            image.save(r"static/image/tagimage/"+t.image)
+
     return render_template('index.html', category=category, slides=slides)
 
 @app.route('/adm', methods=['POST', 'GET'])
 @login_required
 
-def adm():
+def adm(*args, **kwargs):
+
+    posts=Post.query.all()
+    tags=Tag.query.all()
+    slides=Slider.query.all()
 
     d=list(dict(request.args).values())
     if d==['Создать товар']:
-        print(d)
         return redirect(url_for('create_post'))
 
 
     if d==['Создать категорию']:
-        print(d)
         return redirect(url_for('create_tag'))
 
 
     if d==['Создать слайд']:
-        print(d)
         return redirect(url_for('create_slide'))
 
-    return render_template('adm.html')
+
+
+
+    return render_template('adm.html', posts=posts, tags=tags, slides=slides)
 
 
 @app.route('/adm/createpost', methods=['POST', 'GET'])

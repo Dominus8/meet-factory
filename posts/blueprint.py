@@ -1,6 +1,6 @@
 from flask import Blueprint, redirect, url_for, render_template, request
 from models import *
-from .forms import PostForm
+from forms import *
 from app import db, app
 from flask_security import login_required
 from flask_uploads import UploadSet, configure_uploads, IMAGES
@@ -50,6 +50,39 @@ def edit_post(slug):
 
     form = PostForm(obj=post)
     return render_template('posts/edit_post.html', post=post, form=form)
+
+
+@posts.route('/<slug>/tagedit/', methods=['POST', 'GET'])
+@login_required
+def edit_tag(slug):
+    tag = Tag.query.filter(Tag.slug == slug).first_or_404()
+    print(tag)
+    if request.method == 'POST':
+        form = TagForm(formdata=request.form, obj=tag)
+        form.populate_obj(tag)
+        print(tag)
+        db.session.commit()
+
+        return redirect(url_for('posts.tag_detail', slug=tag.slug))
+
+    form = TagForm(obj=tag)
+    return render_template('posts/edit_tag.html', tag=tag, form=form)
+
+
+@posts.route('/<id>/slideedit/', methods=['POST', 'GET'])
+@login_required
+def edit_slide(id):
+    slide = Slider.query.filter(Slider.id == id).first_or_404()
+    print(slide)
+    if request.method == 'POST':
+        form = SliderForm(formdata=request.form, obj=slide)
+        form.populate_obj(slide)
+        db.session.commit()
+
+        return redirect(url_for('adm', id=slide.id))
+
+    form = SliderForm(obj=slide)
+    return render_template('posts/edit_slide.html', slide=slide, form=form)
 
 
 @posts.route('/')

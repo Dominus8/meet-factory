@@ -4,21 +4,61 @@
   Админка
 {% endblock %}
 
-{% block content_titletitle %}
+{% block content_title %}
   Управление содержимым
 {% endblock %}
 
 {% block content %}
-<div style="display:flex;">
+
+<!--Блок отобрадения кнопок добавления товаров, категорий и слайдов-->
+
+<div style="display:flex; justify-content:space-around; margin:50px 0 50px 0;">
   <form action="{{url_for('adm')}}" method="get">
-    <input type="submit" name="create" value="Создать товар">
+    <input type="submit" class="btn btn-outline-primary" name="create" value="Создать товар">
   </form>
   <form action="{{url_for('adm')}}" method="get">
-    <input type="submit" name="create" value="Создать категорию">
+    <input type="submit" class="btn btn-outline-primary" name="create" value="Создать категорию">
   </form>
   <form action="{{url_for('adm') }}" method="get">
-    <input type="submit" name="create" value="Создать слайд">
+    <input type="submit" class="btn btn-outline-primary" name="create" value="Создать слайд">
   </form>
+</div>
+
+<!--блок отображения списка товаров, категорий и слайдов-->
+
+<div class="row">
+  <div class="col-md-4">
+    <h5>Товары</h5>
+    {% for p in posts %}
+    <div class="">
+      <a type="button" class="btn btn-outline-secondary" href="{{url_for('posts.post_detail', slug=p.slug)}}">{{p.title}}</a>
+      <a type="button" class="btn btn-outline-success" href="{{url_for('posts.edit_post', slug=p.slug)}}">Edit</a>
+      <a type="button" class="btn btn-outline-danger" href="#">Del</a>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="col-md-4">
+    <h5>Категории</h5>
+    {% for t in tags %}
+    <div class="">
+      <a type="button" class="btn btn-outline-secondary" href="{{url_for('posts.tag_detail', slug=t.slug)}}">{{t.name}}</a>
+      <a type="button" class="btn btn-outline-success" href="{{url_for('posts.edit_tag', slug=t.slug)}}">Edit</a>
+      <a type="button" class="btn btn-outline-danger" href="#">Del</a>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="col-md-4">
+    <h5>Слайды</h5>
+    {% for s in slides %}
+    <div class="">
+      <a type="button" class="btn btn-outline-secondary" href="#">{{s.title}}</a>
+      <a type="button" class="btn btn-outline-success" href="{{url_for('posts.edit_slide', id=s.id)}}">Edit</a>
+      <a type="button" class="btn btn-outline-danger" href="#">Del</a>
+    </div>
+    {% endfor %}
+  </div>
 </div>
 
 
