@@ -1,5 +1,45 @@
 {% extends 'base.html' %}
 
+{% block title %}
+    Где купить
+{% endblock %}
+
 {% block content %}
-<h2>kek</h2>
-{% endblock%}
+<div class="container">
+    <div class="col-md-12">
+        <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A7ad60f9512b545e6dbc0c1c95e3489c3db5d3bf65d5f60103cb2ecc0ee34af0d&amp;source=constructor" width="1280" height="400" frameborder="0"></iframe>
+    </div>
+
+    <div class="col-md-12 adres_shop">
+            <div class="col-md-3">
+                <h5>Магазин 1</h5>
+                <p>
+                    Адрес 1
+                    телефон 1
+                </p>
+            </div>
+
+        <div class="col-md-3">
+            <h5>Магазин 2</h5>
+            <p>
+                Адрес 2
+                телефон 2
+            </p>
+        </div>
+        <div class="col-md-3">
+            <h5>Магазин 3</h5>
+            <p>
+                Адрес 3
+                телефон 3
+            </p>
+        </div>
+        <div class="col-md-3">
+            <h5>Ммагазин 4</h5>
+            <p>
+                Адрес 4
+                телефон 4
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

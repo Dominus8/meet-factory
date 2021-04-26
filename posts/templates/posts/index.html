@@ -5,7 +5,9 @@
 {% endblock %}
 
 {% block content_title %}
-    <a href="{{ url_for('posts.index') }}">Каталог</a>
+    <div class="cat-dtn">
+        <a href="{{ url_for('posts.index') }}">Каталог</a>
+    </div>
 {% endblock %}
 
 {% block content %}
@@ -14,16 +16,15 @@
 
     <div class="col-md-3">
         {% for t in tags %}
-           <a type="button" class="btn btn-outline-primary" href="{{ url_for('posts.index', slug=t.slug) }}">{{t.name}}</a><br>
+           <a type="button" class="btn btn-outline-primary tag-list" href="{{ url_for('posts.index', slug=t.slug) }}">{{t.name}}</a><br>
         {% endfor %}
     </div>
 
 
     <div class="col-md-9">
-        <div class="row">
             <div class="cards_content">
                 {% for post in pages.items %}
-                    <div class="card" style="width: 18rem;">
+                    <div class="card" style="width: 16.5rem;">
                         {% if post.image %}
                             <img src="../static/image/{{post.image}}" style="height:250px;" alt="Image"><br>
                         {% endif %}
@@ -34,7 +35,6 @@
                     </div>
                 {% endfor %}
             </div>
-        </div>
         <nav>
           <ul class="pagination pagination-sm">
               {% for page in pages.iter_pages() %}

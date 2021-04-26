@@ -1,0 +1,64 @@
+#navbarCollapse {
+    display: flex;
+    justify-content: space-between;
+}
+
+//----------------цвет подкладки под текстом на слайде-------------
+.carousel-caption {
+    background-color: rgba(245, 245, 245, 0.85);
+    color: black;
+    p {
+        padding: 0 10px;
+        font-size: 16px;
+    }
+}
+
+//-----------------------Картачки категорий--------------------
+.indexcat {
+    display: block;
+    .indexcat__cards {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        .card {
+            margin: 5px 0;
+            .card-body {
+                h5 {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+}
+
+.cat-dtn{
+
+        a{
+            color:black;
+            text-decoration: none;
+        }
+        a:hover{
+            color:red;
+        }
+
+
+}
+.tag-list {
+    margin: 5px 0;
+}
+
+.cards_content{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content:space-between;
+    .card{
+        margin: 5px 0;
+    }
+}
+
+.adres_shop{
+    margin-top: 25px;
+    display:flex;
+    justify-content:space-around;
+
+}

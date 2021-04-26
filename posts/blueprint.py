@@ -136,7 +136,7 @@ def index(*args, **kwargs):
         tag = Tag.query.filter(Tag.slug == s).first_or_404()
         posts = tag.posts
 
-    pages = posts.paginate(page=page, per_page=10)
+    pages = posts.paginate(page=page, per_page=6)
 
 
     return render_template('posts/index.html', posts=posts, pages=pages, tags=tags,)

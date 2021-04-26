@@ -1,32 +1,43 @@
-h2{
-    color: red;
-    font-size: 3rem;
-}
-.cards_content{
-    display:flex;
-}
+#navbarCollapse {
+  display: flex;
+  justify-content: space-between; }
 
-.cat_cards{
-    display:flex;
+.carousel-caption {
+  background-color: rgba(245, 245, 245, 0.85);
+  color: black; }
+  .carousel-caption p {
+    padding: 0 10px;
+    font-size: 16px; }
 
-}
+.indexcat {
+  display: block; }
+  .indexcat .indexcat__cards {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; }
+    .indexcat .indexcat__cards .card {
+      margin: 5px 0; }
+      .indexcat .indexcat__cards .card .card-body h5 {
+        font-size: 16px; }
 
-.cat_cards a{
-    text-decoration:none;
-    color: black;
-}
+.cat-dtn a {
+  color: black;
+  text-decoration: none; }
 
-.cat_cards a .card-body {
-    background-color: grey;
-}
+.cat-dtn a:hover {
+  color: red; }
 
-.cat_cards a .card-body {
-    font-size:0.93em;
-    font-weight: 600;
-    text-transform:uppercase;
-}
+.tag-list {
+  margin: 5px 0; }
 
-#index_cards{
-    text-align:center;
-    margin:5px;
-}
+.cards_content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; }
+  .cards_content .card {
+    margin: 5px 0; }
+
+.adres_shop {
+  margin-top: 25px;
+  display: flex;
+  justify-content: space-around; }
