@@ -2,42 +2,52 @@
   display: flex;
   justify-content: space-between; }
 
-.carousel-caption {
+main .carousel-caption {
   background-color: rgba(245, 245, 245, 0.85);
   color: black; }
-  .carousel-caption p {
+  main .carousel-caption p {
     padding: 0 10px;
     font-size: 16px; }
 
-.indexcat .indexcat__cards {
-  height: 24rem;
+main .indexcat .indexcat__cards {
+  height: 24.5rem;
   overflow-x: auto;
   overflow-y: hidden;
   white-space: nowrap; }
-  .indexcat .indexcat__cards .card {
+  main .indexcat .indexcat__cards .card {
     display: inline-block;
     vertical-align: middle;
     margin: 5px 0; }
-    .indexcat .indexcat__cards .card img {
+    main .indexcat .indexcat__cards .card img {
       height: 16rem; }
-    .indexcat .indexcat__cards .card .card-body h5 {
-      font-size: 16px; }
+    main .indexcat .indexcat__cards .card .card-body h5 {
+      font-size: 1rem; }
 
-.tag-list {
+main .cat-dtn {
+  margin-top: 30px; }
+  main .cat-dtn a {
+    text-decoration: none; }
+
+main .tag-list {
   margin: 5px 0; }
 
-.cards_content {
+main .cards_content {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between; }
-  .cards_content .card {
+  main .cards_content .card {
     margin: 5px 0; }
 
-.adres_shop {
-  margin-top: 25px;
+main .where-title {
+  margin-top: 30px; }
+
+main .map-area {
+  margin-top: 20px; }
+
+main .adres-shop-area {
+  margin-top: 20px;
   display: flex;
   justify-content: space-around; }
 
 footer {
-  /* 0 flex-grow, 0 flex-shrink, auto flex-basis */
-  flex: 0 0 auto; }
+  position: relative bottom; }

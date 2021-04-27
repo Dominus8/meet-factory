@@ -4,62 +4,75 @@
     justify-content: space-between;
 }
 
-//----------------цвет подкладки под текстом на слайде-------------
-.carousel-caption {
-    background-color: rgba(245, 245, 245, 0.85);
-    color: black;
-    p {
-        padding: 0 10px;
-        font-size: 16px;
+//------------------------область основного контента --------------------
+main {
+    //----------------цвет подкладки под текстом на слайде-------------
+    .carousel-caption {
+        background-color: rgba(245, 245, 245, 0.85);
+        color: black;
+        p {
+            padding: 0 10px;
+            font-size: 16px;
+        }
     }
-}
-
-//-----------------------Картачки категорий--------------------
-.indexcat {
-    .indexcat__cards {
-        height: 24rem;
-        overflow-x: auto;
-        overflow-y: hidden;
-        white-space: nowrap;
-        //         display: flex;
-        //         justify-content: space-between;
-        //         flex-wrap: wrap;
-        .card {
-            display: inline-block;
-            vertical-align: middle;
-            margin: 5px 0;
-            img {
-                height: 16rem;
-            }
-            .card-body {
-                h5 {
-                    font-size: 16px;
+    //-----------------------Картачки категорий на главной--------------------
+    .indexcat {
+        .indexcat__cards {
+            height: 24.5rem;
+            overflow-x: auto;
+            overflow-y: hidden;
+            white-space: nowrap;
+            //         display: flex;
+            //         justify-content: space-between;
+            //         flex-wrap: wrap;
+            .card {
+                display: inline-block;
+                vertical-align: middle;
+                margin: 5px 0;
+                img {
+                    height: 16rem;
+                }
+                .card-body {
+                    h5 {
+                        font-size: 1rem;
+                    }
                 }
             }
         }
     }
-}
-
-.tag-list {
-    margin: 5px 0;
-}
-
-.cards_content {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    .card {
+    //---------------------------------- Каталог -------------------------------
+    .cat-dtn {
+        margin-top: 30px;
+        a {
+            text-decoration: none;
+        }
+    }
+    .tag-list {
         margin: 5px 0;
+    }
+    .cards_content {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        .card {
+            margin: 5px 0;
+        }
+    }
+    //-----------------------------Страница с адресом и картой -----------------
+    .where-title {
+        margin-top: 30px;
+    }
+    .map-area {
+        margin-top: 20px;
+    }
+    .adres-shop-area {
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-around;
     }
 }
 
-.adres_shop {
-    margin-top: 25px;
-    display: flex;
-    justify-content: space-around;
-}
-
+//--------------------------------------- Подвал ---------------------------
 footer {
-    /* 0 flex-grow, 0 flex-shrink, auto flex-basis */
-    flex: 0 0 auto;
+    position: relative bottom;
 }
