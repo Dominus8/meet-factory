@@ -1,42 +1,42 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %}
 
+{% block content %}
+<!----------------------------------------------- Слайдер ------------------------------------------------------------>
 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" style="color:black;">
     <div class="carousel-inner">
-        {% for s in slides %} {% if s.id==1 %}
-        <div class="carousel-item active">
-            <img src="../static/image/slider/{{s.image}}" class="d-block w-100" alt="Image">
-            <div class="carousel-caption d-none d-md-block">
-                <h5>{{s.title}}</h5>
-                <p>{{s.body}}</p>
-            </div>
-        </div>
-        {% else %}
-        <div class="carousel-item">
-            <img src="../static/image/slider/{{s.image}}" class="d-block w-100" alt="Image">
-
-            <div class="carousel-caption d-none d-md-block">
-                <h5>{{s.title}}</h5>
-                <p>{{s.body}}</p>
-            </div>
-        </div>
-
-        {% endif %} {% endfor %}
-
-
+        {% for s in slides %}
+            {% if s.id==1 %}
+                <div class="carousel-item active">
+                    <img src="../static/image/slider/{{s.image}}" class="d-block w-100" alt="Image">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>{{s.title}}</h5>
+                        <p>{{s.body}}</p>
+                    </div>
+                </div>
+            {% else %}
+                <div class="carousel-item">
+                    <img src="../static/image/slider/{{s.image}}" class="d-block w-100" alt="Image">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>{{s.title}}</h5>
+                        <p>{{s.body}}</p>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
     </div>
-
 </div>
+
+<!----------------------------------------- Блок с карточками категорий ----------------------------------------------->
 <div class="row indexcat">
     <div class="indexcat__cards">
         {% for c in category %}
-
-        <div class="card" style="width: 17rem; ">
-            <img src="../static/image/tagimage/{{c.image}}" class="card-img-top" alt="¯\_(ツ)_/¯">
-            <div class="card-body">
-                <h5 class="card-title">{{c.name}}</h5>
-                <a href="{{ url_for('posts.tag_detail', slug=c.slug) }}" class="btn btn-primary">К товарам</a>
+            <div class="card" style="width: 17rem; ">
+                <img src="../static/image/tagimage/{{c.image}}" class="card-img-top" alt="¯\_(ツ)_/¯">
+                <div class="card-body">
+                    <h5 class="card-title">{{c.name}}</h5>
+                    <a href="{{ url_for('posts.tag_detail', slug=c.slug) }}" class="btn btn-primary">К товарам</a>
+                </div>
             </div>
-        </div>
         {% endfor %}
     </div>
 </div>

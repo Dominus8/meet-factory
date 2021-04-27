@@ -5,6 +5,7 @@ from app import db, app
 from flask_security import login_required
 from flask_uploads import UploadSet, configure_uploads, IMAGES
 from PIL import Image
+import os
 
 posts = Blueprint('posts', __name__, template_folder='templates')
 
@@ -15,7 +16,6 @@ configure_uploads(app, photos)
 
 
 # создание поста
-
 @posts.route('/create', methods=['POST', 'GET'])
 @login_required
 def create_post():
@@ -35,7 +35,7 @@ def create_post():
     form = PostForm()
     return render_template('posts/create_post.html', form=form)
 
-
+#Изменение поста
 @posts.route('/<slug>/edit/', methods=['POST', 'GET'])
 @login_required
 def edit_post(slug):
@@ -50,7 +50,7 @@ def edit_post(slug):
     form = PostForm(obj=post)
     return render_template('posts/edit_post.html', post=post, form=form)
 
-
+# Изменение категории
 @posts.route('/<slug>/tagedit/', methods=['POST', 'GET'])
 @login_required
 def edit_tag(slug):
@@ -58,7 +58,6 @@ def edit_tag(slug):
     if request.method == 'POST':
         form = TagForm(formdata=request.form, obj=tag)
         form.populate_obj(tag)
-        print(tag)
         db.session.commit()
 
         return redirect(url_for('posts.tag_detail', slug=tag.slug))
@@ -66,7 +65,7 @@ def edit_tag(slug):
     form = TagForm(obj=tag)
     return render_template('posts/edit_tag.html', tag=tag, form=form)
 
-
+#Изменение слайда
 @posts.route('/<id>/slideedit/', methods=['POST', 'GET'])
 @login_required
 def edit_slide(id):
@@ -81,7 +80,7 @@ def edit_slide(id):
     form = SliderForm(obj=slide)
     return render_template('posts/edit_slide.html', slide=slide, form=form)
 
-
+# Удаление через админку по id
 @posts.route('/<id>/delete/', methods=['POST', 'GET'])
 @login_required
 def delete(*args, **kwargs):
@@ -92,6 +91,7 @@ def delete(*args, **kwargs):
             post = Post.query.filter(Post.id == id).first_or_404()
             db.session.delete(post)
             db.session.commit()
+            os.remove("static/image/"+post.image)
         except:
             print('база не спогла')
         return redirect(url_for('adm'))
@@ -100,6 +100,8 @@ def delete(*args, **kwargs):
             tag = Tag.query.filter(Tag.id == id).first_or_404()
             db.session.delete(tag)
             db.session.commit()
+            os.remove("static/image/"+tag.image)
+            os.remove("static/image/tagimage/"+tag.image)
         except:
             print('база не спогла')
         return redirect(url_for('adm'))
@@ -108,12 +110,15 @@ def delete(*args, **kwargs):
             slide = Slider.query.filter(Slider.id == id).first_or_404()
             db.session.delete(slide)
             db.session.commit()
+            os.remove("static/image/"+slide.image)
+            os.remove("static/image/slider/"+slide.image)
         except:
             print('база не спогла')
         return redirect(url_for('adm'))
 
     return render_template('adm.html')
 
+# Главная страница каталога, Поиск и Пагинация
 @posts.route('/')
 def index(*args, **kwargs):
     q = request.args.get('q')
@@ -141,7 +146,7 @@ def index(*args, **kwargs):
 
     return render_template('posts/index.html', posts=posts, pages=pages, tags=tags,)
 
-
+# Страница товара
 @posts.route('/<slug>')
 def post_detail(slug):
     post = Post.query.filter(Post.slug == slug).first_or_404()
@@ -150,12 +155,14 @@ def post_detail(slug):
     if img.size[0] != '450':
         image = img.resize((450, 450), Image.ANTIALIAS)
     image = image.save("static/image/"+post.image)
+
     return render_template('posts/post_detail.html', post=post, tags=tags, image=image)
 
-
+# Странца с товарами отсортированными по категории
 @posts.route('/tag/<slug>')
 def tag_detail(slug):
     tag = Tag.query.filter(Tag.slug == slug).first_or_404()
     posts = tag.posts.all()
+
     return render_template('posts/tag_detail.html', tag=tag, posts=posts)
 

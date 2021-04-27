@@ -12,22 +12,25 @@ def index():
     category = Tag.query.all()
     slides = Slider.query.all()
 
+# обработка изображений в слайдере на главной странице
     for s in slides:
         img = Image.open("static/image/"+s.image)
 
         if img.size[0] != '1100':
-            image = img.resize((1200, 601), Image.ANTIALIAS)
+            image = img.resize((1200, 501), Image.ANTIALIAS)
             image.save(r"static/image/slider/"+s.image)
 
+# обработка изображений в карточках категорий на главной странице
     for t in category:
         img = Image.open("static/image/"+t.image)
 
-        if img.size[0] != '285':
-            image = img.resize((286, 286), Image.ANTIALIAS)
+        if img.size[0] != '270':
+            image = img.resize((270, 256), Image.ANTIALIAS)
             image.save(r"static/image/tagimage/"+t.image)
 
     return render_template('index.html', category=category, slides=slides)
 
+# Кастомная админка
 @app.route('/adm', methods=['POST', 'GET'])
 @login_required
 def adm(*args, **kwargs):
@@ -49,7 +52,7 @@ def adm(*args, **kwargs):
 
     return render_template('adm.html', posts=posts, tags=tags, slides=slides)
 
-
+# Создать пост через кастомную админку
 @app.route('/adm/createpost', methods=['POST', 'GET'])
 @login_required
 
@@ -72,7 +75,7 @@ def create_post():
 
     return render_template('create.html', form=form)
 
-
+# Создать слайд через кастомную админку
 @app.route('/adm/createslide', methods=['POST', 'GET'])
 @login_required
 
@@ -95,7 +98,7 @@ def create_slide():
 
     return render_template('createSlide.html', form=form)
 
-
+# Создать категорию через кастомную админку
 @app.route('/adm/creattag', methods=['POST', 'GET'])
 @login_required
 
@@ -118,12 +121,12 @@ def create_tag():
 
     return render_template('createTag.html', form=form)
 
-
+# Где купить
 @app.route('/where')
 def where():
     return render_template('where.html')
 
-
+# О заводе
 @app.route('/about')
 def about():
     return render_template('about.html')

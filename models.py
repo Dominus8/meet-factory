@@ -51,6 +51,10 @@ class Tag(db.Model):
     image = db.Column(db.String(150), default='')
     subtitle = db.Column(db.Text)
 
+    def generate_slug(self):
+        if self.title:
+            self.slug = slygify(self.title)
+
 
     def __init__(self, *args, **kwargs):
         super(Tag, self).__init__(*args, **kwargs)

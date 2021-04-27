@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "bootstrap-icons": "^1.4.1",
     "gulp-watch-less": "^1.0.1"
   },
   "devDependencies": {
