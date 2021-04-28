@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Ruslan+Display&display=swap');
 //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 a {
     text-decoration: none;
@@ -5,7 +6,7 @@ a {
     font-size: 14px;
     font-weight: 600;
     text-transform: uppercase;
-    color: #000000 !important;
+    color: #000000;
 }
 
 .header {
@@ -20,6 +21,11 @@ a {
     justify-content: center;
     .section-inner {
         width: 1200px;
+        .head-title {
+            text-align: center;
+            font-size: 4rem;
+            font-family: 'Ruslan Display', cursive;
+        }
         .header-wrapper {
             padding: 15px 20px 15px 20px;
             height: 90px;
@@ -62,15 +68,15 @@ a {
 }
 
 .section-item {
-    margin: 25px 0;
+    margin-top: -60px;
     .section-item__title {
-        margin: 15px 0;
+        padding-top: 100px;
         text-align: center;
         h3 {}
     }
     .section-item__body {
         .cards_content {
-            margin: 50px 0;
+            padding-top: 25px;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
@@ -78,8 +84,26 @@ a {
                 margin: 5px;
                 .card-body {
                     a {
-                        color: rgb(253, 247, 247);
+                        font-weight: 600;
                     }
+                }
+            }
+        }
+    }
+    .section-item__body {
+        &-adress-cards {
+            display: flex;
+            justify-content: space-around;
+        }
+        &-map {
+            padding-top: 35px;
+        }
+        &-adress-cards {
+            padding-top: 25px;
+            .adress-card {
+                &__title {
+                    font-size: 1.5rem;
+                    font-weight: 600;
                 }
             }
         }
@@ -87,6 +111,7 @@ a {
 }
 
 .footer {
-    height: 225px;
+    margin-top: 50px;
+    height: 180px;
     background-color: rgb(85, 84, 84);
 }

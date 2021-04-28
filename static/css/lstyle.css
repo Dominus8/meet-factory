@@ -1,10 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Ruslan+Display&display=swap");
 a {
   text-decoration: none;
   outline: none;
   font-size: 14px;
   font-weight: 600;
   text-transform: uppercase;
-  color: #000000 !important; }
+  color: #000000; }
 
 .header {
   background-color: #f9f6f3;
@@ -17,6 +18,10 @@ a {
   justify-content: center; }
   .section-outer .section-inner {
     width: 1200px; }
+    .section-outer .section-inner .head-title {
+      text-align: center;
+      font-size: 4rem;
+      font-family: 'Ruslan Display', cursive; }
     .section-outer .section-inner .header-wrapper {
       padding: 15px 20px 15px 20px;
       height: 90px;
@@ -46,20 +51,31 @@ a {
         color: grey; }
 
 .section-item {
-  margin: 25px 0; }
+  margin-top: -60px; }
   .section-item .section-item__title {
-    margin: 15px 0;
+    padding-top: 100px;
     text-align: center; }
   .section-item .section-item__body .cards_content {
-    margin: 50px 0;
+    padding-top: 25px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center; }
     .section-item .section-item__body .cards_content .card {
       margin: 5px; }
       .section-item .section-item__body .cards_content .card .card-body a {
-        color: #fdf7f7; }
+        font-weight: 600; }
+  .section-item .section-item__body-adress-cards {
+    display: flex;
+    justify-content: space-around; }
+  .section-item .section-item__body-map {
+    padding-top: 35px; }
+  .section-item .section-item__body-adress-cards {
+    padding-top: 25px; }
+    .section-item .section-item__body-adress-cards .adress-card__title {
+      font-size: 1.5rem;
+      font-weight: 600; }
 
 .footer {
-  height: 225px;
+  margin-top: 50px;
+  height: 180px;
   background-color: #555454; }
