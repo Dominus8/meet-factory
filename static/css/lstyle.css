@@ -89,4 +89,7 @@ a {
 .footer {
   margin-top: 50px;
   height: 180px;
-  background-color: #555454; }
+  background-color: #555454;
+  text-align: center; }
+  .footer p {
+    padding-top: 70px; }

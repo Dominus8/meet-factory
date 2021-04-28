@@ -45,7 +45,6 @@ a {
         }
         .nav-wrapper-sm {
             display: none;
-            &__item {}
         }
         .header-wrapper__number {
             .number-wrapper {
@@ -139,4 +138,8 @@ a {
     margin-top: 50px;
     height: 180px;
     background-color: rgb(85, 84, 84);
+    text-align: center;
+    p {
+        padding-top: 70px;
+    }
 }

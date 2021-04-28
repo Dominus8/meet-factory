@@ -45,7 +45,7 @@
             <div class="head-title">
                 Мясной дом запорожца
             </div>
-
+            <!-------------------------------------------------------- Слайдер ------------------------------------------------------------------------------------>
             <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" style="color:black;">
                 <div class="carousel-inner">
                     {% for s in slides %} {% if s.id==1 %}
@@ -67,7 +67,7 @@
                     {% endif %} {% endfor %}
                 </div>
             </div>
-
+            <!-------------------------------------------------------- Ливерные колбасы и паштеты ------------------------------------------------------------------------------------>
             <div class="liverwoods section-item" id="liverwoodsbutton">
                 <div class="liverwoods-title section-item__title">
                     <h2>Ливерные колбасы и паштеты</h2>
@@ -113,6 +113,8 @@
                 </div>
             </div>
 
+            <!-------------------------------------------------------- Полукопчёные ------------------------------------------------------------------------------------>
+
             <div class="semismoked section-item" id="semismokedbutton">
                 <div class="liverwoods-title section-item__title">
                     <h2>Полукопчёные колбасы</h2>
@@ -151,10 +153,13 @@
                                 </div>
                             </div>
                         </div>
+
                         {% endfor %}
                     </div>
                 </div>
             </div>
+
+            <!-------------------------------------------------------- Варёно-копчёные ------------------------------------------------------------------------------------>
 
             <div class="boiledsmoked section-item" id="boiledsmokedbutton">
                 <div class="boiledsmoked-title section-item__title">
@@ -194,10 +199,13 @@
                                 </div>
                             </div>
                         </div>
+
                         {% endfor %}
                     </div>
                 </div>
             </div>
+
+            <!-------------------------------------------------------- Варёные ------------------------------------------------------------------------------------>
 
             <div class="boiled section-item" id="boiledbutton">
                 <div class="boiled-title section-item__title">
@@ -237,10 +245,12 @@
                                 </div>
                             </div>
                         </div>
+
                         {% endfor %}
                     </div>
                 </div>
             </div>
+            <!-------------------------------------------------------- Сосиски и Сардельки ------------------------------------------------------------------------------------>
 
             <div class="sausages section-item" id="sausagesbutton">
                 <div class="sausages-title section-item__title">
@@ -280,19 +290,28 @@
                                 </div>
                             </div>
                         </div>
+
                         {% endfor %}
                     </div>
                 </div>
             </div>
+
+            <!-------------------------------------------------------- Где купить ------------------------------------------------------------------------------------>
 
             <div class="abou section-item" id="aboutbutton">
                 <div class="abou-title section-item__title">
                     <h2>Где купить</h2>
                 </div>
                 <div class="abou-body section-item__body">
+
+                    <!-------------------------------------------------------- Блок карты ------------------------------------------------------------------------------------>
+
                     <div class="section-item__body-map">
                         <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A5a75376839c44944fe323b0f3d13e66497191120afefbc378b5aa6476dfd2481&amp;source=constructor" width="1200" height="400" frameborder="0"></iframe>
                     </div>
+
+                    <!-------------------------------------------------------- Адресоа магазинов ------------------------------------------------------------------------------>
+
                     <div class="section-item__body-adress-cards">
                         <div class="adress-card">
                             <div class="adress-card__title">Название магазина</div>
@@ -331,7 +350,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
 
@@ -339,7 +357,7 @@
     </div>
 
     <div class="footer">
-
+        <p>@Power by AiHead </p>
     </div>
 
 
