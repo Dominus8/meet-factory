@@ -29,20 +29,6 @@
                         <div class="nav-wrapper__item"><a href="#sausagesbutton">Сосиски и сардельки</a></div>
                         <div class="nav-wrapper__item"><a href="#aboutbutton">Где купить</a></div>
                     </div>
-
-                    <div class="nav-wrapper-sm dropdown">
-
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Drop Me!</button>
-
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <div class="nav-wrapper-sm__item dropdown-item"><a href="#">"Ливерные"</a></div>
-                            <div class="nav-wrapper-sm__item dropdown-item"><a href="#menu_advantages">Полукопчёные</a></div>
-                            <div class="nav-wrapper-sm__item dropdown-item"><a href="#menu_price">Копчёно-варёные</a></div>
-                            <div class="nav-wrapper-sm__item dropdown-item"><a href="#menu_calc">Варёные</a></div>
-                            <div class="nav-wrapper-sm__item dropdown-item"><a href="#menu_evidence">Сосиски и сардельки</a></div>
-                            <div class="nav-wrapper-sm__item dropdown-item"><a href="#menu_partners">Где купить</a></div>
-                        </div>
-                    </div>
                 </div>
                 <div class="header-wrapper__number">
                     <div class="number-wrapper">
@@ -95,7 +81,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">{{ post.title }}</h5>
                                 <!-- <a href="{{ url_for('posts.post_detail', slug=post.slug) }}" class="btn btn-primary">Подробнее</a> -->
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal{{ post.id }}">
+                                <button type="button" class="btn btn-outline-primary card-button" data-bs-toggle="modal" data-bs-target="#exampleModal{{ post.id }}">
                                     Подробнее
                                 </button>
                             </div>
@@ -111,7 +97,10 @@
                                     </div>
                                     <div class="modal-body">
                                         {% if post.image %}
-                                        <img src="../static/image/{{post.image}}" style="height:450px; width: 450px;" alt="Image"> {% endif %} {{post.body}}
+                                        <img src="../static/image/{{post.image}}" style="height:450px; width: 450px;" alt="Image"> {% endif %}
+                                        <div class="modal-body__description">
+                                            {{post.body}}
+                                        </div>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
@@ -137,7 +126,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">{{ post.title }}</h5>
                                 <!-- <a href="{{ url_for('posts.post_detail', slug=post.slug) }}" class="btn btn-primary">Подробнее</a> -->
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal{{ post.id }}">Подробнее</button>
+                                <button type="button" class="btn btn-outline-primary card-button" data-bs-toggle="modal" data-bs-target="#exampleModal{{ post.id }}">Подробнее</button>
                             </div>
                         </div>
 
@@ -151,7 +140,10 @@
                                     </div>
                                     <div class="modal-body">
                                         {% if post.image %}
-                                        <img src="../static/image/{{post.image}}" style="height:450px; width: 450px;" alt="Image"> {% endif %} {{post.body}}
+                                        <img src="../static/image/{{post.image}}" style="height:450px; width: 450px;" alt="Image"> {% endif %}
+                                        <div class="modal-body__description">
+                                            {{post.body}}
+                                        </div>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
@@ -177,7 +169,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">{{ post.title }}</h5>
                                 <!-- <a href="{{ url_for('posts.post_detail', slug=post.slug) }}" class="btn btn-primary">Подробнее</a> -->
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal{{ post.id }}">Подробнее</button>
+                                <button type="button" class="btn btn-outline-primary card-button" data-bs-toggle="modal" data-bs-target="#exampleModal{{ post.id }}">Подробнее</button>
                             </div>
                         </div>
 
@@ -191,7 +183,10 @@
                                     </div>
                                     <div class="modal-body">
                                         {% if post.image %}
-                                        <img src="../static/image/{{post.image}}" style="height:450px; width: 450px;" alt="Image"> {% endif %} {{post.body}}
+                                        <img src="../static/image/{{post.image}}" style="height:450px; width: 450px;" alt="Image"> {% endif %}
+                                        <div class="modal-body__description">
+                                            {{post.body}}
+                                        </div>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
@@ -217,7 +212,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">{{ post.title }}</h5>
                                 <!-- <a href="{{ url_for('posts.post_detail', slug=post.slug) }}" class="btn btn-primary">Подробнее</a> -->
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal{{ post.id }}">Подробнее</button>
+                                <button type="button" class="btn btn-outline-primary card-button" data-bs-toggle="modal" data-bs-target="#exampleModal{{ post.id }}">Подробнее</button>
                             </div>
                         </div>
 
@@ -231,7 +226,10 @@
                                     </div>
                                     <div class="modal-body">
                                         {% if post.image %}
-                                        <img src="../static/image/{{post.image}}" style="height:450px; width: 450px;" alt="Image"> {% endif %} {{post.body}}
+                                        <img src="../static/image/{{post.image}}" style="height:450px; width: 450px;" alt="Image"> {% endif %}
+                                        <div class="modal-body__description">
+                                            {{post.body}}
+                                        </div>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
@@ -257,7 +255,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">{{ post.title }}</h5>
                                 <!-- <a href="{{ url_for('posts.post_detail', slug=post.slug) }}" class="btn btn-primary">Подробнее</a> -->
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal{{ post.id }}">Подробнее</button>
+                                <button type="button" class="btn btn-outline-primary card-button" data-bs-toggle="modal" data-bs-target="#exampleModal{{ post.id }}">Подробнее</button>
                             </div>
                         </div>
 
@@ -271,7 +269,10 @@
                                     </div>
                                     <div class="modal-body">
                                         {% if post.image %}
-                                        <img src="../static/image/{{post.image}}" style="height:450px; width: 450px;" alt="Image"> {% endif %} {{post.body}}
+                                        <img src="../static/image/{{post.image}}" style="height:450px; width: 450px;" alt="Image"> {% endif %}
+                                        <div class="modal-body__description">
+                                            {{post.body}}
+                                        </div>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>

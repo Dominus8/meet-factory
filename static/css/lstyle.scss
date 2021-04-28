@@ -67,12 +67,23 @@ a {
     }
 }
 
+.carousel {
+    &-inner {
+        .carousel-item {
+            .carousel-caption {
+                padding: 10px;
+                color: rgb(19, 8, 5);
+                background-color: rgba(248, 241, 234, 0.699);
+            }
+        }
+    }
+}
+
 .section-item {
     margin-top: -60px;
     .section-item__title {
         padding-top: 100px;
         text-align: center;
-        h3 {}
     }
     .section-item__body {
         .cards_content {
@@ -83,8 +94,22 @@ a {
             .card {
                 margin: 5px;
                 .card-body {
-                    a {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    .card-button {
                         font-weight: 600;
+                    }
+                }
+            }
+            .modal {
+                .modal-dialog {
+                    .modal-content {
+                        .modal-body {
+                            &__description {
+                                padding-top: 10px;
+                            }
+                        }
                     }
                 }
             }
